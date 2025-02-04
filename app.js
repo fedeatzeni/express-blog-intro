@@ -11,9 +11,54 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
+// general route
 app.get('/', (req, res) => {
 	res.send('Server del mio blog')
 })
+
+// static 
+app.use(express.static("public"));
+
+//array
+const food = [
+    {
+        "titolo": "ciambellone",
+        "contenuto": "ciambellone",
+        "immagine": "./images/ciambellone.jpeg",
+        "tags": ["cibo", "dolce",],
+    },
+    {
+        "titolo": "cracker_barbabietola",
+        "contenuto": "cracker_barbabietola",
+        "immagine": "./images/cracker_barbabietola.jpeg",
+        "tags": ["cibo", "salato",],
+    },
+    {
+        "titolo": "pane_fritto_dolce",
+        "contenuto": "pane_fritto_dolce",
+        "immagine": "./images/pane_fritto_dolce.jpeg",
+        "tags": ["cibo", "dolce",],
+    },
+    {
+        "titolo": "pasta_barbabietola",
+        "contenuto": "pasta_barbabietola",
+        "immagine": "./images/pasta_barbabietola.jpeg",
+        "tags": ["cibo", "primo",],
+    },
+    {
+        "titolo": "torta_paesana",
+        "contenuto": "torta_paesana",
+        "immagine": "./images/torta_paesana.jpeg",
+        "tags": ["cibo", "dolce",],
+    },
+];
+
+// bacheca
+app.get('/bacheca', (req, res) => {
+	res.json(food)
+})
+
+
 
 app.listen(port, () => {
 	console.log(`Example app listening on port ${port}`)
